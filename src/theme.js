@@ -7,6 +7,42 @@ const theme = extendTheme({
     appBarHeight: "58px",
     boardBarHeight: "60px",
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          fontSize: "0.875rem",
+        }),
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          fontsize: "0.875rem",
+          ".MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary.light,
+          },
+          "&:hover": {
+            ".MuiOutlinedInput-notchedOutline": {
+              borderColor: theme.palette.primary.main,
+            },
+          },
+          "& fieldset": {
+            borderWidth: "1px !important",
+          },
+        }),
+      },
+    },
+  },
   colorSchemes: {
     light: {
       palette: {
