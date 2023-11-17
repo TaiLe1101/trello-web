@@ -1,21 +1,21 @@
 import AppsIcon from "@mui/icons-material/Apps";
-import NotificationsNone from "@mui/icons-material/NotificationsNone";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import Box from "@mui/material/Box";
-import SvgIcon from "@mui/material/SvgIcon";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+import NotificationsNone from "@mui/icons-material/NotificationsNone";
 import Badge from "@mui/material/Badge";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import SvgIcon from "@mui/material/SvgIcon";
+import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
 
 import { ReactComponent as TrelloIcon } from "~/assets/trello.svg";
 import ModeSelect from "~/components/ModeSelect";
+import Profiles from "./Menus/Profiles";
 import Recent from "./Menus/Recent";
 import Starred from "./Menus/Starred";
 import Templates from "./Menus/Templates";
 import Workspaces from "./Menus/Workspaces";
-import Profiles from "./Menus/Profiles";
 
 function AppBar() {
   return (
@@ -37,6 +37,7 @@ function AppBar() {
               component={TrelloIcon}
               inheritViewBox
               sx={{ color: "primary.main" }}
+              fontSize="small"
             ></SvgIcon>
             <Typography
               variant="span"
@@ -65,12 +66,12 @@ function AppBar() {
           <ModeSelect />
           <Tooltip title="Notifications">
             <Badge color="secondary" variant="dot" sx={{ cursor: "pointer" }}>
-              <NotificationsNone />
+              <NotificationsNone sx={{ color: "primary.main" }} />
             </Badge>
           </Tooltip>
           <Tooltip title="Help">
             <Badge color="secondary" sx={{ cursor: "pointer" }}>
-              <HelpOutlineOutlinedIcon />
+              <HelpOutlineOutlinedIcon sx={{ color: "primary.main" }} />
             </Badge>
           </Tooltip>
           <Profiles />
