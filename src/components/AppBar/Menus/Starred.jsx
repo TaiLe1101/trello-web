@@ -23,55 +23,54 @@ function Starred() {
 
   return (
     <>
-      <Box>
-        <Button
-          id="fade-button-starred"
-          aria-controls={open ? "fade-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-          endIcon={<ExpandMoreIcon />}
-        >
-          Starred
-        </Button>
-        <Menu
-          id="fade-menu-starred"
-          MenuListProps={{
-            "aria-labelledby": "fade-button",
-          }}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          TransitionComponent={Fade}
-        >
-          <MenuItem>
-            <ListItemText inset>Single</ListItemText>
-          </MenuItem>
-          <MenuItem>
-            <ListItemText inset>1.15</ListItemText>
-          </MenuItem>
-          <MenuItem>
-            <ListItemText inset>Double</ListItemText>
-          </MenuItem>
-          <MenuItem>
-            <ListItemIcon>
-              <Check />
-            </ListItemIcon>
-            Custom: 1.2
-          </MenuItem>
-          <Divider />
-          <MenuItem>
-            <ListItemText>Add space before paragraph</ListItemText>
-          </MenuItem>
-          <MenuItem>
-            <ListItemText>Add space after paragraph</ListItemText>
-          </MenuItem>
-          <Divider />
-          <MenuItem>
-            <ListItemText>Custom spacing...</ListItemText>
-          </MenuItem>
-        </Menu>
-      </Box>
+      <Button
+        sx={{ color: "white" }}
+        id="fade-button-starred"
+        aria-controls={open ? "fade-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+        endIcon={<ExpandMoreIcon />}
+      >
+        Starred
+      </Button>
+      <Menu
+        id="fade-menu-starred"
+        MenuListProps={{
+          "aria-labelledby": "fade-button",
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        <MenuItem>
+          <ListItemText inset>Single</ListItemText>
+        </MenuItem>
+        <MenuItem>
+          <ListItemText inset>1.15</ListItemText>
+        </MenuItem>
+        <MenuItem>
+          <ListItemText inset>Double</ListItemText>
+        </MenuItem>
+        <MenuItem>
+          <ListItemIcon>
+            <Check />
+          </ListItemIcon>
+          Custom: 1.2
+        </MenuItem>
+        <Divider />
+        <MenuItem>
+          <ListItemText>Add space before paragraph</ListItemText>
+        </MenuItem>
+        <MenuItem>
+          <ListItemText>Add space after paragraph</ListItemText>
+        </MenuItem>
+        <Divider />
+        <MenuItem>
+          <ListItemText>Custom spacing...</ListItemText>
+        </MenuItem>
+      </Menu>
     </>
   );
 }
