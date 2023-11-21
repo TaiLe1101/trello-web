@@ -1,6 +1,8 @@
 import AppsIcon from "@mui/icons-material/Apps";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import NotificationsNone from "@mui/icons-material/NotificationsNone";
+
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -57,7 +59,9 @@ function AppBar() {
             <Recent />
             <Starred />
             <Templates />
-            <Button variant="outlined">Create</Button>
+            <Button variant="outlined" startIcon={<LibraryAddIcon />}>
+              Create
+            </Button>
           </Box>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
