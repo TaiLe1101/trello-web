@@ -27,6 +27,7 @@ function Workspaces() {
   return (
     <Box>
       <Button
+        sx={{ color: "white" }}
         id="fade-button-workspaces"
         aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"

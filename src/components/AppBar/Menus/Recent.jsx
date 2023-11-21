@@ -25,6 +25,7 @@ function Recent() {
     <>
       <Box>
         <Button
+          sx={{ color: "white" }}
           id="fade-button-recent"
           aria-controls={open ? "fade-menu" : undefined}
           aria-haspopup="true"
