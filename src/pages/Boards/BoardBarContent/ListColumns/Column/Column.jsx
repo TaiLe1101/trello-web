@@ -21,8 +21,10 @@ import SaveIcon from "@mui/icons-material/Save";
 import { useState } from "react";
 
 import ListCards from "./ListCards";
+import { mockData } from "~/apis/mock-data";
+import { mapOrder } from "~/utils/sorts";
 
-function Column() {
+function Column({ column }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (e) => {
@@ -32,6 +34,8 @@ function Column() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, "_id");
 
   return (
     <Box
@@ -131,7 +135,7 @@ function Column() {
       </Box>
 
       {/* Box Column content */}
-      <ListCards></ListCards>
+      <ListCards cards={orderedCards}></ListCards>
 
       {/* Box Column footer */}
       <Box
