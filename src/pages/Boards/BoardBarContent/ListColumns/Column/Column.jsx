@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
@@ -18,13 +20,22 @@ import DragHandleIcon from "@mui/icons-material/DragHandle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SaveIcon from "@mui/icons-material/Save";
 
-import { useState } from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
-import ListCards from "./ListCards";
-import { mockData } from "~/apis/mock-data";
 import { mapOrder } from "~/utils/sorts";
+import ListCards from "./ListCards";
 
 function Column({ column }) {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: column._id, data: { ...column } });
+
+  const dndKitColumnStyle = {
+    transform: CSS.Translate.toString(transform),
+    transition,
+    // touchAction: "none", // Dùng cho sensor PointerSensor
+  };
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (e) => {
@@ -39,6 +50,10 @@ function Column({ column }) {
 
   return (
     <Box
+      ref={setNodeRef}
+      style={dndKitColumnStyle}
+      {...attributes}
+      {...listeners}
       sx={{
         minWidth: "300px",
         maxWidth: "300px",

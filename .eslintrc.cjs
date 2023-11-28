@@ -13,7 +13,7 @@ module.exports = {
   plugins: ["react-refresh"],
   rules: {
     "no-unused-vars": "warn",
-    "react/prop-types": "warn",
+    "react/prop-types": "none", // Turn on when fix bug props types
     "no-restricted-imports": [
       "error",
       {

@@ -7,7 +7,7 @@ import { mockData } from "~/apis/mock-data";
 
 function Board() {
   return (
-    <Box disableGutters sx={{ height: "100vh" }}>
+    <Box sx={{ height: "100vh" }}>
       <AppBar />
       <BoardBar board={mockData.board} />
       <BoardBarContent board={mockData.board} />
