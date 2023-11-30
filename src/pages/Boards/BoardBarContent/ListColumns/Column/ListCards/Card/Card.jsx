@@ -9,9 +9,29 @@ import AttachmentIcon from "@mui/icons-material/Attachment";
 import CommentIcon from "@mui/icons-material/Comment";
 import GroupIcon from "@mui/icons-material/Group";
 
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
 import PropTypes from "prop-types";
 
 function Card({ card }) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: card?._id, data: { ...card } });
+
+  const dndKitCardStyle = {
+    transform: CSS.Translate.toString(transform),
+    transition,
+    // touchAction: "none", // Dùng cho sensor PointerSensor
+    opacity: isDragging ? 0.5 : undefined,
+    border: isDragging ? "1px solid #2ecc71" : undefined,
+  };
+
   const shouldShowCardActions = () => {
     return (
       !!card?.memberIds?.length ||
@@ -22,6 +42,10 @@ function Card({ card }) {
 
   return (
     <MuiCard
+      ref={setNodeRef}
+      style={dndKitCardStyle}
+      {...attributes}
+      {...listeners}
       sx={{
         cursor: "pointer",
         boxShadow: "0 1px 1px rgba(0, 0, 0, 0.2)",
