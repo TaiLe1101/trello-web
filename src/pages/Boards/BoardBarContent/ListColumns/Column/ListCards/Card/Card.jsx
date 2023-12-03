@@ -50,6 +50,7 @@ function Card({ card }) {
         cursor: "pointer",
         boxShadow: "0 1px 1px rgba(0, 0, 0, 0.2)",
         overflow: "unset",
+        userSelect: "none",
       }}
     >
       {card?.cover && <CardMedia sx={{ height: 140 }} image={card.cover} />}
