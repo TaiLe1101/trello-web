@@ -1,9 +1,9 @@
 import Box from "@mui/material/Box";
-import AppBar from "~/components/AppBar";
 
+import AppBar from "~/components/AppBar";
+import { mockData } from "~/apis/mock-data";
 import BoardBar from "./BoardBar";
 import BoardBarContent from "./BoardBarContent";
-import { mockData } from "~/apis/mock-data";
 
 function Board() {
   return (

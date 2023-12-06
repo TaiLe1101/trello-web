@@ -1,4 +1,4 @@
-import { cloneDeep } from "lodash";
+import { cloneDeep, isEmpty } from "lodash";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import Box from "@mui/material/Box";
@@ -22,6 +22,7 @@ import { mapOrder } from "~/utils/sorts";
 import ListColumns from "./ListColumns";
 import Column from "./ListColumns/Column";
 import Card from "./ListColumns/Column/ListCards/Card";
+import { generatePlaceholderCard } from "~/utils/formatters";
 
 const ACTIVE_DRAG_ITEM_TYPE = {
   COLUMN: "ACTIVE_DRAG_ITEM_TYPE_COLUMN",
@@ -107,6 +108,11 @@ function BoardBarContent({ board }) {
           (card) => card._id !== activeDraggingCardId
         );
 
+        // Add Placeholder empty card
+        if (isEmpty(nextActiveColumn.cards)) {
+          nextActiveColumn.cards = [generatePlaceholderCard(nextActiveColumn)];
+        }
+
         nextActiveColumn.cardOrderIds = nextActiveColumn.cards.map(
           (card) => card._id
         );
@@ -127,6 +133,10 @@ function BoardBarContent({ board }) {
           newCardIndex,
           0,
           rebuild_activeDraggingCardData
+        );
+
+        nextOverColumn.cards = nextOverColumn.cards.filter(
+          (card) => !card.FE_PlaceholderCard
         );
 
         nextOverColumn.cardOrderIds = nextOverColumn.cards.map(

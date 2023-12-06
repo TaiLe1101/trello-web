@@ -1,10 +1,12 @@
+import { useState } from "react";
+
 import AppsIcon from "@mui/icons-material/Apps";
+import CloseIcon from "@mui/icons-material/Close";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import NotificationsNone from "@mui/icons-material/NotificationsNone";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
-import CloseIcon from "@mui/icons-material/Close";
 
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
@@ -21,7 +23,6 @@ import Recent from "./Menus/Recent";
 import Starred from "./Menus/Starred";
 import Templates from "./Menus/Templates";
 import Workspaces from "./Menus/Workspaces";
-import { useState } from "react";
 
 function AppBar() {
   const [valueSearch, setValueSearch] = useState("");

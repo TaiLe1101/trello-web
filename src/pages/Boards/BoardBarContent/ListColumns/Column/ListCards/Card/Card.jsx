@@ -23,7 +23,6 @@ function Card({ card }) {
     transition,
     isDragging,
   } = useSortable({ id: card?._id, data: { ...card } });
-
   const dndKitCardStyle = {
     transform: CSS.Translate.toString(transform),
     transition,
@@ -51,6 +50,7 @@ function Card({ card }) {
         boxShadow: "0 1px 1px rgba(0, 0, 0, 0.2)",
         overflow: "unset",
         userSelect: "none",
+        display: card?.FE_PlaceholderCard ? "none" : "block",
       }}
     >
       {card?.cover && <CardMedia sx={{ height: 140 }} image={card.cover} />}
