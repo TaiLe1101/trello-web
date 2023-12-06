@@ -14,6 +14,7 @@ module.exports = {
   rules: {
     "no-unused-vars": "warn",
     "react/prop-types": "warn", // Turn on when fix bug props types
+    "no-extra-boolean-cast": 0,
     "no-restricted-imports": [
       "error",
       {
