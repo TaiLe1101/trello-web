@@ -6,6 +6,7 @@ import { fetchBoardDetailAPI } from "~/apis";
 import AppBar from "~/components/AppBar";
 import BoardBar from "./BoardBar";
 import BoardBarContent from "./BoardBarContent";
+import { mockData } from "~/apis/mock-data";
 
 function Board() {
   const [board, setBoard] = useState(null);
@@ -18,8 +19,8 @@ function Board() {
   return (
     <Box sx={{ height: "100vh" }}>
       <AppBar />
-      <BoardBar board={board} />
-      <BoardBarContent board={board} />
+      <BoardBar board={mockData.board} />
+      <BoardBarContent board={mockData.board} />
     </Box>
   );
 }
