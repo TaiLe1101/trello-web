@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 
 import Box from "@mui/material/Box";
 
-import { mockData } from "~/apis/mock-data";
+import { fetchBoardDetailAPI } from "~/apis";
 import AppBar from "~/components/AppBar";
 import BoardBar from "./BoardBar";
 import BoardBarContent from "./BoardBarContent";
-import { fetchBoardDetailAPI } from "~/apis";
 
 function Board() {
   const [board, setBoard] = useState(null);
 
   useEffect(() => {
-    const boardId = "6573eaea3e7b0658d0466ffc";
+    const boardId = "657491f9daa438e92de43144";
     fetchBoardDetailAPI(boardId).then((resBoard) => setBoard(resBoard));
   }, []);
 
