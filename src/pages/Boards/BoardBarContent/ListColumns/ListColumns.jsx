@@ -12,6 +12,7 @@ import {
 
 import { useState } from "react";
 import Column from "./Column";
+import { toast } from "react-toastify";
 
 function ListColumns({ columns }) {
   const [newColumnTitle, setNewColumnTitle] = useState("");
@@ -21,7 +22,7 @@ function ListColumns({ columns }) {
 
   const handleAddNewColumn = () => {
     if (!newColumnTitle) {
-      console.error("[ERROR] 👉", `Không được để rỗng title`);
+      toast.error('Vui lòng nhập "Column Title"');
       return;
     }
 
