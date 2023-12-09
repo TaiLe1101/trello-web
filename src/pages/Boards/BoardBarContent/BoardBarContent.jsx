@@ -6,8 +6,6 @@ import Box from "@mui/material/Box";
 import {
   DndContext,
   DragOverlay,
-  MouseSensor,
-  TouchSensor,
   closestCenter,
   closestCorners,
   defaultDropAnimationSideEffects,
@@ -18,11 +16,12 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 
+import { MouseSensor, TouchSensor } from "~/customs/library/DndKitSensors";
+import { generatePlaceholderCard } from "~/utils/formatters";
 import { mapOrder } from "~/utils/sorts";
 import ListColumns from "./ListColumns";
 import Column from "./ListColumns/Column";
 import Card from "./ListColumns/Column/ListCards/Card";
-import { generatePlaceholderCard } from "~/utils/formatters";
 
 const ACTIVE_DRAG_ITEM_TYPE = {
   COLUMN: "ACTIVE_DRAG_ITEM_TYPE_COLUMN",

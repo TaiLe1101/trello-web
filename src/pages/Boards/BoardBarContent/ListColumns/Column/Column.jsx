@@ -213,6 +213,7 @@ function Column({ column }) {
                 label="Enter card title"
                 variant="outlined"
                 autoFocus
+                data-no-dnd="true"
                 type="text"
                 size="small"
                 value={newCardTitle}
@@ -244,6 +245,7 @@ function Column({ column }) {
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 <Button
                   variant="contained"
+                  data-no-dnd="true"
                   color="success"
                   size="small"
                   sx={{
