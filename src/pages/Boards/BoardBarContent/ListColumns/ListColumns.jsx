@@ -14,17 +14,23 @@ import { useState } from "react";
 import Column from "./Column";
 import { toast } from "react-toastify";
 
-function ListColumns({ columns }) {
+function ListColumns({ columns, createNewColumn, createNewCard }) {
   const [newColumnTitle, setNewColumnTitle] = useState("");
   const [openNewColumnForm, setOpenNewColumnForm] = useState(false);
   const toggleOpenNewColumnForm = () =>
     setOpenNewColumnForm(!openNewColumnForm);
 
-  const handleAddNewColumn = () => {
+  const handleAddNewColumn = async () => {
     if (!newColumnTitle) {
       toast.error('Vui lòng nhập "Column Title"');
       return;
     }
+
+    // Tạo dữ liệu gọi column api
+    const newColumnData = {
+      title: newColumnTitle,
+    };
+    await createNewColumn(newColumnData);
 
     toggleOpenNewColumnForm();
     setNewColumnTitle("");
@@ -49,7 +55,11 @@ function ListColumns({ columns }) {
         }}
       >
         {columns?.map((column) => (
-          <Column key={column._id} column={column} />
+          <Column
+            key={column._id}
+            column={column}
+            createNewCard={createNewCard}
+          />
         ))}
 
         {/* Box add new column */}

@@ -28,7 +28,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { mapOrder } from "~/utils/sorts";
 import ListCards from "./ListCards";
 
-function Column({ column }) {
+function Column({ column, createNewCard }) {
   const [newCardTitle, setNewCardTitle] = useState("");
   const [openNewCardForm, setOpenNewCardForm] = useState(false);
 
@@ -63,11 +63,18 @@ function Column({ column }) {
 
   const toggleOpenNewCardForm = () => setOpenNewCardForm(!openNewCardForm);
 
-  const handleAddNewCard = () => {
+  const handleAddNewCard = async () => {
     if (!newCardTitle) {
       console.error("[ERROR] 👉", `Không được để rỗng title`);
       return;
     }
+
+    const createNewCardData = {
+      title: newCardTitle,
+      columnId: column._id,
+    };
+
+    await createNewCard(createNewCardData);
 
     toggleOpenNewCardForm();
     setNewCardTitle("");
