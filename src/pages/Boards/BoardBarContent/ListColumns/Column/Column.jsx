@@ -8,12 +8,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 
-import CloseIcon from "@mui/icons-material/Close";
 import AddCardIcon from "@mui/icons-material/AddCard";
+import CloseIcon from "@mui/icons-material/Close";
 import ContentCopy from "@mui/icons-material/ContentCopy";
 import ContentCut from "@mui/icons-material/ContentCut";
 import ContentPaste from "@mui/icons-material/ContentPaste";
@@ -25,7 +25,6 @@ import SaveIcon from "@mui/icons-material/Save";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import { mapOrder } from "~/utils/sorts";
 import ListCards from "./ListCards";
 
 function Column({ column, createNewCard }) {
@@ -59,7 +58,7 @@ function Column({ column, createNewCard }) {
     setAnchorEl(null);
   };
 
-  const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, "_id");
+  const orderedCards = column.cards;
 
   const toggleOpenNewCardForm = () => setOpenNewCardForm(!openNewCardForm);
 
@@ -74,7 +73,7 @@ function Column({ column, createNewCard }) {
       columnId: column._id,
     };
 
-    await createNewCard(createNewCardData);
+    createNewCard(createNewCardData);
 
     toggleOpenNewCardForm();
     setNewCardTitle("");

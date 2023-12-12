@@ -18,7 +18,6 @@ import { arrayMove } from "@dnd-kit/sortable";
 
 import { MouseSensor, TouchSensor } from "~/customs/library/DndKitSensors";
 import { generatePlaceholderCard } from "~/utils/formatters";
-import { mapOrder } from "~/utils/sorts";
 import ListColumns from "./ListColumns";
 import Column from "./ListColumns/Column";
 import Card from "./ListColumns/Column/ListCards/Card";
@@ -33,6 +32,7 @@ function BoardBarContent({
   createNewColumn,
   createNewCard,
   moveColumn,
+  moveCardInTheSameColumn,
 }) {
   const mouseSensor = useSensor(MouseSensor, {
     activationConstraint: {
@@ -58,7 +58,7 @@ function BoardBarContent({
     useState(null);
 
   useEffect(() => {
-    setOrderedColumns(mapOrder(board?.columns, board?.columnOrderIds, "_id"));
+    setOrderedColumns(board.columns);
   }, [board]);
 
   const lastOverId = useRef(null);
@@ -204,6 +204,7 @@ function BoardBarContent({
 
     if (!over || !active) return;
 
+    // Xử lý kéo thả card
     if (activeDragItemType === ACTIVE_DRAG_ITEM_TYPE.CARD) {
       const {
         id: activeDraggingCardId,
@@ -244,6 +245,8 @@ function BoardBarContent({
           newCardIndex
         );
 
+        const dndOrderedCardIds = dndOrderedCards.map((card) => card._id);
+
         setOrderedColumns((prevColumns) => {
           const nextColumns = cloneDeep(prevColumns);
 
@@ -252,13 +255,20 @@ function BoardBarContent({
           );
 
           targetColumn.cards = dndOrderedCards;
-          targetColumn.cardOrderIds = dndOrderedCards.map((card) => card._id);
+          targetColumn.cardOrderIds = dndOrderedCardIds;
 
           return nextColumns;
         });
+
+        moveCardInTheSameColumn(
+          dndOrderedCards,
+          dndOrderedCardIds,
+          oldColumnWhenDraggingCard._id
+        );
       }
     }
 
+    // Xử lý kéo thả column
     if (activeDragItemType === ACTIVE_DRAG_ITEM_TYPE.COLUMN) {
       if (active.id !== over.id) {
         // Find old position
@@ -277,8 +287,9 @@ function BoardBarContent({
           newColumnIndex
         );
 
-        moveColumn(dndOrderedColumns);
         setOrderedColumns(dndOrderedColumns);
+
+        moveColumn(dndOrderedColumns);
       }
     }
 
